@@ -1,31 +1,22 @@
+import PropTypes from 'prop-types';
 import './currencies.scss';
 
-const Currencies = () => (
+const Currencies = ({ currencies }) => (
   <ol className="currencies scroller">
     <p className="currencies-title">Currencies</p>
-    <li className="currency">Dollar</li>
-    <li className="currency">Lev</li>
-    <li className="currency">Franc</li>
-    <li className="currency">Franc</li>
-    <li className="currency">Franc</li>
-    <li className="currency">Franc</li>
-    <li className="currency">Franc</li>
-    <li className="currency">Franc</li>
-    <li className="currency">Franc</li>
-    <li className="currency">Franc</li>
-    <li className="currency">Franc</li>
-    <li className="currency">Franc</li>
-    <li className="currency">Franc</li>
-    <li className="currency">Franc</li>
-    <li className="currency">Franc</li>
-    <li className="currency">Franc</li>
-    <li className="currency">Franc</li>
-    <li className="currency">Franc</li>
-    <li className="currency">Franc</li>
-    <li className="currency">Franc</li>
-    <li className="currency">Franc</li>
-    <li className="currency">Franc</li>
+    {currencies.map((currency)=>(
+      <li className="currency">{currency.name}</li>
+    ))}
   </ol>
 );
+
+Currencies.propTypes = {
+  currencies: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      rate: PropTypes.number.isRequired,
+    }).isRequired,
+  ).isRequired,
+};
 
 export default Currencies;

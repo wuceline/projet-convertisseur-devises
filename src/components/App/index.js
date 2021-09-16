@@ -1,5 +1,6 @@
 // == Import
 import './styles.css';
+import currenciesData from 'src/data/currencies';
 
 import Header from '../Header';
 import Currencies from '../Currencies';
@@ -9,7 +10,9 @@ import Result from '../Result';
 const App = () => (
   <div className="app">
     <Header />
-    <Currencies />
+    <Currencies
+      currencies={currenciesData}
+    />
     <Result />
 
   </div>
