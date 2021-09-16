@@ -1,0 +1,20 @@
+@use 'src/styles/vars';
+
+.result{
+  background-color: #fff;
+  color: vars.$mainColor;
+  font-size: 2rem;
+
+
+  .result-number{
+    font-weight: bold;
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+
+  }
+
+  .result-currency{
+    padding-bottom: 3rem;
+  }
+
+}
