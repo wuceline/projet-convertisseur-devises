@@ -2,9 +2,9 @@ import PropTypes from 'prop-types';
 import './currencies.scss';
 
 const Currencies = ({ currencies }) => (
-  <ol className="currencies scroller">
+  <ol className="currencies">
     <p className="currencies-title">Currencies</p>
-    {currencies.map((currency)=>(
+    {currencies.map((currency) => (
       <li className="currency">{currency.name}</li>
     ))}
   </ol>

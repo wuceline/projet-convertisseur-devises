@@ -5,6 +5,8 @@
   color: vars.$mainColor;
   font-size: 1.2rem;
   text-align:left;
+  overflow-y: scroll;
+  height:20rem;
 
   .currencies-title{
     font-weight: bold;
@@ -14,10 +16,19 @@
   .currency{
     border-top: solid vars.$mainColor 1px;
     padding:1rem 0 1rem 1rem;
+    
+  }
+
+  .currency:hover{
+    background-color: vars.$alternativeColor;
+    // transition: background-color 1s;
+    transition: background-color 0.2s;
+
+
   }
   
 }
-.scroller {
-  overflow-y: scroll;
-  height:20rem;
-}
+// .scroller {
+//   overflow-y: scroll;
+//   height:20rem;
+// }
