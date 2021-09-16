@@ -1,0 +1,23 @@
+@use 'src/styles/vars';
+
+.currencies{
+  background-color: #fff;
+  color: vars.$mainColor;
+  font-size: 1.2rem;
+  text-align:left;
+
+  .currencies-title{
+    font-weight: bold;
+    padding:1rem 0 1rem 1rem;
+  
+  }
+  .currency{
+    border-top: solid vars.$mainColor 1px;
+    padding:1rem 0 1rem 1rem;
+  }
+  
+}
+.scroller {
+  overflow-y: scroll;
+  height:20rem;
+}

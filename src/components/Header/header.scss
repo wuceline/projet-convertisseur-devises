@@ -1,0 +1,17 @@
+@use 'src/styles/vars';
+
+.title{
+  background: vars.$mainColor;
+  color:#fff;
+  padding:2rem;
+  .title-value{
+    font-size: 2rem;
+    font-weight: bold;
+    padding-bottom:1rem;
+
+  }
+
+  .title-content{
+    font-size: 1.2rem;
+  }
+}
