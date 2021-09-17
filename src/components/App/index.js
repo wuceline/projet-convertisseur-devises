@@ -39,12 +39,17 @@ class App extends React.Component {
   render() {
     const { open, amount, currency } = this.state;
 
+    const usDollar = currenciesData.find(currencyOfArray => currencyOfArray.name === 'United States Dollar');
+    const usDollarRate = usDollar.rate;
+
+    const resultAmount = (amount * usDollarRate).toFixed(2);
+
     return (
       <div className="app">
         <Header amount={amount} />
         <CustomButton isOpen={open} toggleOpen={this.handleClick} />
         {open && <Currencies currencies={currenciesData} />}
-        <Result currency={currency} />
+        <Result currency={currency} resultAmount={resultAmount} />
       </div>
     );
   }
