@@ -13,6 +13,8 @@ const CustomButton = ({ isOpen, toggleOpen }) => {
       onClick={() => {
         toggleOpen();
       }}
+      // ici on peut
+      // onClick={toggleOpen}
     >
       +
     </button>
