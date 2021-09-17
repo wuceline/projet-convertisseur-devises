@@ -4,10 +4,10 @@ import React from 'react';
 import './styles.css';
 import currenciesData from 'src/data/currencies';
 
+import CustomButton from 'src/components/CustomButton';
 import Header from '../Header';
 import Currencies from '../Currencies';
 import Result from '../Result';
-import CustomButton from 'src/components/CustomButton';
 
 // == Composant
 class App extends React.Component {
@@ -21,8 +21,10 @@ class App extends React.Component {
     this.state = {
       // indique si currencies est affiché
       open: true,
-
+      amount: 1,
+      currency: 'United States Dollar',
     };
+
     this.handleClick = this.handleClick.bind(this);
   }
 
@@ -35,14 +37,14 @@ class App extends React.Component {
   }
 
   render() {
-    const { open } = this.state;
+    const { open, amount, currency } = this.state;
 
     return (
       <div className="app">
-        <Header />
+        <Header amount={amount} />
         <CustomButton isOpen={open} toggleOpen={this.handleClick} />
         {open && <Currencies currencies={currenciesData} />}
-        <Result />
+        <Result currency={currency} />
       </div>
     );
   }
