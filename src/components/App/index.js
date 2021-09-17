@@ -36,6 +36,14 @@ class App extends React.Component {
     });
   }
 
+  handleEnter() {
+    const { amount } = this.state;
+
+    this.setState({
+      amount: amount,
+    });
+  }
+
   render() {
     const { open, amount, currency } = this.state;
 
@@ -46,10 +54,13 @@ class App extends React.Component {
 
     return (
       <div className="app">
-        <Header amount={amount} />
+        <Header amount={amount} toggleEnter={this.handleEnter} />
         <CustomButton isOpen={open} toggleOpen={this.handleClick} />
         {open && <Currencies currencies={currenciesData} />}
-        <Result currency={currency} resultAmount={resultAmount} />
+        <Result
+          currency={currency}
+          resultAmount={resultAmount}
+        />
       </div>
     );
   }
