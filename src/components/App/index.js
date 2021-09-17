@@ -7,16 +7,25 @@ import Currencies from '../Currencies';
 import Result from '../Result';
 
 // == Composant
-const App = () => (
-  <div className="app">
-    <Header />
-    <Currencies
-      currencies={currenciesData}
-    />
-    <Result />
+const App = () => {
+  let open = true;
 
-  </div>
-);
+  return (
+    <div className="app">
+      <Header />
+      <button
+        type="button"
+        onClick={() => {
+          open = false;
+        }}
+      >
+        Toggle Currencies
+      </button>
+      {open && <Currencies currencies={currenciesData} />}
+      <Result />
+    </div>
+  );
+};
 
 // == Export
 export default App;
