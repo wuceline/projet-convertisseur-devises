@@ -16,13 +16,13 @@
   .currency{
     border-top: solid vars.$mainColor 1px;
     padding:1rem 0 1rem 1rem;
+    transition: background-color vars.$slowTransition;
     
   }
 
   .currency:hover{
     background-color: vars.$alternativeColor;
-    // transition: background-color 1s;
-    transition: background-color 0.2s;
+    transition: background-color vars.$fastTransition;
 
 
   }
