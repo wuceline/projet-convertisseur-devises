@@ -28,11 +28,14 @@ class App extends React.Component {
       currency: 'United States Dollar',
       // contenu du champ de recherche
       inputSearch: '',
+      // contenu du champ amount
+      inputNumber: '',
     };
 
     this.handleClick = this.handleClick.bind(this);
     this.handleChangeCurrency = this.handleChangeCurrency.bind(this);
     this.handleSearchChange = this.handleSearchChange.bind(this);
+    this.handleChangeAmount = this.handleChangeAmount.bind(this);
   }
 
   handleClick() {
@@ -52,6 +55,12 @@ class App extends React.Component {
   handleSearchChange(newValue) {
     this.setState({
       inputSearch: newValue,
+    });
+  }
+
+  handleChangeAmount(newValue) {
+    this.setState({
+      amount: newValue,
     });
   }
 
@@ -76,8 +85,6 @@ class App extends React.Component {
     return roundedResult;
   }
 
-
-
   render() {
     const {
       open,
@@ -85,13 +92,13 @@ class App extends React.Component {
       currency,
       inputSearch,
     } = this.state;
-
+    console.log(amount);
     const resultAmount = this.computeAmount();
     const currenciesFiltered = this.getFilteredCurrencies();
 
     return (
       <div className="app">
-        <Header amount={amount} />
+        <Header amount={amount} setAmount={this.handleChangeAmount} />
         <CustomButton isOpen={open} toggleOpen={this.handleClick} />
         {open && (
           <Currencies
