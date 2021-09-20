@@ -59,8 +59,9 @@ class App extends React.Component {
   }
 
   handleChangeAmount(newValue) {
+    const newValueAsNumber = Number(newValue);
     this.setState({
-      amount: newValue,
+      amount: newValueAsNumber,
     });
   }
 
