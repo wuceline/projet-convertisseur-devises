@@ -26,9 +26,18 @@
 
 
   }
+  .currencies-search {
+    padding: 0.8rem;
+    margin-top: 0.8rem;
+    border: none;
+    width: 100%;
+    color: vars.$mainColor;
+    font-size: 1.2em;
+
+    &::placeholder {
+      color:vars.$alternativeColor;
+    }
   
+  }
 }
-// .scroller {
-//   overflow-y: scroll;
-//   height:20rem;
-// }
+

@@ -18,14 +18,18 @@ class App extends React.Component {
 
     // création du state : objet qui contient des propriétés et founit
     // les valeurs initiales
+
     this.state = {
       // indique si currencies est affiché
       open: true,
+      // montant à convertir
       amount: 1,
+      // nom de la devise sélectionnée
       currency: 'United States Dollar',
     };
 
     this.handleClick = this.handleClick.bind(this);
+    this.handleChangeCurrency = this.handleChangeCurrency.bind(this);
   }
 
   handleClick() {
@@ -36,27 +40,38 @@ class App extends React.Component {
     });
   }
 
-  handleEnter() {
-    const { amount } = this.state;
-
+  handleChangeCurrency(newCurrency) {
     this.setState({
-      amount: amount,
+      currency: newCurrency,
     });
+  }
+
+  computeAmount() {
+    const { currency, amount } = this.state;
+    console.log(currency);
+    const selectedCurrency = currenciesData.find((item) => item.name === currency);
+    const selectedCurrencyRate = selectedCurrency.rate;
+
+    const result = amount * selectedCurrencyRate;
+    const roundedResult = result.toFixed(2);
+    return roundedResult;
   }
 
   render() {
     const { open, amount, currency } = this.state;
 
-    const usDollar = currenciesData.find(currencyOfArray => currencyOfArray.name === 'United States Dollar');
-    const usDollarRate = usDollar.rate;
-
-    const resultAmount = (amount * usDollarRate).toFixed(2);
+    const resultAmount = this.computeAmount();
 
     return (
       <div className="app">
-        <Header amount={amount} toggleEnter={this.handleEnter} />
+        <Header amount={amount} />
         <CustomButton isOpen={open} toggleOpen={this.handleClick} />
-        {open && <Currencies currencies={currenciesData} />}
+        {open && (
+          <Currencies
+            currencies={currenciesData}
+            handleCurrencyClick={this.handleChangeCurrency}
+          />
+        )}
         <Result
           currency={currency}
           resultAmount={resultAmount}

@@ -10,6 +10,8 @@ const Result = ({ currency, resultAmount }) => (
 
 Result.propTypes = {
   currency: PropTypes.string.isRequired,
+  resultAmount: PropTypes.string.isRequired,
+
 };
 
 export default Result;
