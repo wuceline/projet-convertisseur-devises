@@ -26,10 +26,13 @@ class App extends React.Component {
       amount: 1,
       // nom de la devise sélectionnée
       currency: 'United States Dollar',
+      // contenu du champ de recherche
+      inputSearch: '',
     };
 
     this.handleClick = this.handleClick.bind(this);
     this.handleChangeCurrency = this.handleChangeCurrency.bind(this);
+    this.handleSearchChange = this.handleSearchChange.bind(this);
   }
 
   handleClick() {
@@ -46,9 +49,25 @@ class App extends React.Component {
     });
   }
 
+  handleSearchChange(newValue) {
+    this.setState({
+      inputSearch: newValue,
+    });
+  }
+
+  getFilteredCurrencies() {
+    const currenciesFiltered = currenciesData.filter((currentCurrency) => {
+      const { inputSearch } = this.state;
+      const currentNameLowered = currentCurrency.name.toLowerCase();
+      const inputSearchLowered = inputSearch.toLowerCase();
+
+      return currentNameLowered.includes(inputSearchLowered);
+    });
+    return currenciesFiltered;
+  }
+
   computeAmount() {
     const { currency, amount } = this.state;
-    console.log(currency);
     const selectedCurrency = currenciesData.find((item) => item.name === currency);
     const selectedCurrencyRate = selectedCurrency.rate;
 
@@ -57,10 +76,18 @@ class App extends React.Component {
     return roundedResult;
   }
 
+
+
   render() {
-    const { open, amount, currency } = this.state;
+    const {
+      open,
+      amount,
+      currency,
+      inputSearch,
+    } = this.state;
 
     const resultAmount = this.computeAmount();
+    const currenciesFiltered = this.getFilteredCurrencies();
 
     return (
       <div className="app">
@@ -68,8 +95,10 @@ class App extends React.Component {
         <CustomButton isOpen={open} toggleOpen={this.handleClick} />
         {open && (
           <Currencies
-            currencies={currenciesData}
+            currencies={currenciesFiltered}
             handleCurrencyClick={this.handleChangeCurrency}
+            search={inputSearch}
+            setSearch={this.handleSearchChange}
           />
         )}
         <Result

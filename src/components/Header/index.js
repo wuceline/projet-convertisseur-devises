@@ -10,7 +10,7 @@ const Header = ({ amount }) => (
 );
 
 Header.propTypes = {
-  // amount: PropTypes.number.isRequired,
+  amount: PropTypes.number.isRequired,
 };
 
 export default Header;
